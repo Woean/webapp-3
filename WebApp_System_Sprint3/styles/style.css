@@ -1,0 +1,139 @@
+body {
+  font-family: Helvetica;
+  color: black;
+}
+
+#überschrift {
+  font-family: Helvetica;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  margin: auto;
+  width: 50%;
+}
+
+#formüber {
+  font-family: Helvetica;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+#newLabel{
+  font-size: 16px;
+
+}
+
+table{
+  background-color: #f8f8f8;
+  border: 1px solid #a8a8a8;
+  border-collapse: collapse;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  color: black;
+  font-family: Helvetica;
+}
+
+#tableheader{
+  font-family: Helvetica;
+  color: #cc0033;
+  background: #a8a8a8;
+}
+
+#printButton,#addEdit, #back {
+  text-align: center;
+}
+
+#new{
+  margin: auto;
+  width: 50%;
+}
+
+
+#save, #reset, #backButton{
+  background-color: #cc0033;
+  color: #a8a8a8;
+  text-align: center;
+  font-size: 16px;
+}
+
+#save:hover, #reset:hover, #backButton:hover{
+
+  background-color: white;
+  color: black;
+  border-color: #cc0033;
+}
+
+#inputPrintButton{
+  margin: auto;
+  width: 50%;
+  background-color: #cc0033;
+  color: #a8a8a8;
+  font-size: 16px;
+}
+
+#inputPrintButton:hover{
+  background-color: white;
+  color: black;
+  border-color: #cc0033;
+
+}
+
+#header_row{
+  font-weight: bold;
+  background-color:#4d8ccb;
+}
+
+tr{
+  border: 1px solid black;
+
+}
+
+td{
+  border: 1px solid black;
+  height:40px;
+  text-align: center;
+}
+
+#searchlabel{
+  font-family: Helvetica;
+  color: #cc0033;
+  margin: auto;
+  width: 50%;
+}
+
+#logofh{
+  width: 100%;
+  height: auto;
+  float: right;
+}
+
+textarea:invalid {
+   border: 1px solid red;
+   outline: none;
+}
+
+textarea:valid {
+  border: 1px solid green;
+  outline: none;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.icon{
+  width: 20px;
+}
