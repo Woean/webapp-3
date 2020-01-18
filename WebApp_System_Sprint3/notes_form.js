@@ -37,11 +37,11 @@ function getForm(notes, id) {
         <link rel="stylesheet" href="/styles/style.css" />
     </head>
     <body>
-        <h1 id="formüber">${noteHeader}</h1>
+        <h1>${noteHeader}</h1>
         <div id="back">
             <button id="backButton" onclick="window.location.href = '/'">zurück zur Haupseite</button><br><br>
         </div>
-        <form name="AddEdit" id="addEdit" action="/save" onsubmit="return validateForm()" method="POST">
+        <form name="AddEdit" id="addEdit" action="/save" method="POST">
             <input type="hidden" id="id" name="id" value="${note.id}" />
             <div>
                 <label for="firstname">Vorname</label><br>
@@ -75,52 +75,38 @@ function getForm(notes, id) {
             <br>
             <button type="submit" id="save">Speichern</button><button type="reset" id="reset" onclick="return confirm('Wollen Sie wirklich alle Einträge zurücksetzen?')">Zurücksetzen</button>
 			
-			<script>
-				function validateForm() {
-					var x = document.forms["AddEdit"]["firstname"].value;
-					if (x.length>30) {
-						alert("Vorname darf nicht länger als 30 Zeichen sein.");
-						return false;
-					}
-					var x = document.forms["AddEdit"]["lastname"].value;
-					if (x.length>30) {
-						alert("Nachname darf nicht länger als 30 Zeichen sein.");
-						return false;
-					}
-					var x = document.forms["AddEdit"]["department"].value;
-					if (x.length>30) {
-						alert("Department darf nicht länger als 30 Zeichen sein.");
-						return false;
-					}
-					var x = document.forms["AddEdit"]["office"].value;
-					if (x.length>3) {
-						alert("Büro darf nicht länger als 3 Zeichen sein.");
-						return false;
-					}
-					var x = document.forms["AddEdit"]["worktime"].value;
-					if (x.length>30) {
-						alert("Arbeitszeit darf nicht länger als 30 Zeichen sein.");
-						return false;
-					}
-					return true;
-				}
-				
+			<script>		
 				function checkInputLetters(e, label) {
 				    var keyCode = e.keyCode || e.which;
-				    var labelError = document.getElementById(label); 
+                    var labelError = document.getElementById(label); 
 				    
 				    if(label.includes("lblErrorDepartment")) {
 				        var regex = /^[A-Za-zÜÖÄüöäß ]+$/;     
-				        var text = "Es sind nur Buchstaben/Leerzeichen erlaubt."
+                        var text = "Es sind nur Buchstaben/Leerzeichen erlaubt."
+                        var length = document.forms["AddEdit"]["department"].value.length;
+                    } else if(label.includes("lblErrorFirstname")) {
+                        var regex = /^[A-Za-zÜÖÄüöäß]+$/;
+                        var text = "Es sind nur Buchstaben erlaubt.";
+                        var length = document.forms["AddEdit"]["firstname"].value.length;
+                    } else if(label.includes("lblErrorLastname")) {
+                        var regex = /^[A-Za-zÜÖÄüöäß]+$/;
+                        var text = "Es sind nur Buchstaben erlaubt.";
+                        var length = document.forms["AddEdit"]["lastname"].value.length;
                     } else {
                         var regex = /^[A-Za-zÜÖÄüöäß]+$/;
                         var text = "Es sind nur Buchstaben erlaubt.";
+                        var length = document.forms["AddEdit"]["worktime"].value.length;
                     }
 				    
                     var isValid = regex.test(String.fromCharCode(keyCode));
                     if (!isValid) {
                         labelError.innerHTML = text;
-                    } else {
+                    } 
+                    else if (length >= 30) {
+                        labelError.innerHTML = "Die Eingabe darf nicht länger als 30 Zeichen sein.";
+                        isValid=false;
+                    } 
+                    else {
                         labelError.innerHTML = "";
                     }
              
@@ -130,19 +116,28 @@ function getForm(notes, id) {
                 function checkInputNumbers(e, label) {
 				    
 				    var keyCode = e.keyCode || e.which;
-				    var labelError = document.getElementById(label);
+                    var labelError = document.getElementById(label);
+                    var length = document.forms["AddEdit"]["office"].value.length;
           
                     var regex = /^[0-9]+$/;
 
                     var isValid = regex.test(String.fromCharCode(keyCode));
                     if (!isValid) {
                         labelError.innerHTML = "Es sind nur Zahlen erlaubt.";
-                    } else {
+                    } 
+                    else if (length >= 3) {
+                        labelError.innerHTML = "Die Eingabe darf nicht länger als 3 Zeichen sein.";
+                        isValid=false;
+                    } 
+                    else {
                         labelError.innerHTML = "";
                     }
              
                     return isValid;
                 }
+
+
+
 			</script>
             
         </form>
