@@ -59,7 +59,7 @@ function printTable() {
          <div class="row">
             <div class="column">
             
-              <h1 id="überschrift">Verwaltungssystem: Vortragende</h1>
+              <h1 id="ueberschrift">Verwaltungssystem: Vortragende</h1>
   
  
         

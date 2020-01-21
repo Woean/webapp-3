@@ -3,7 +3,7 @@ body {
   color: black;
 }
 
-#überschrift {
+#ueberschrift {
   font-family: Helvetica;
   color: black;
   font-weight: bold;
@@ -12,7 +12,7 @@ body {
   width: 50%;
 }
 
-#formüber {
+h1 {
   font-family: Helvetica;
   color: black;
   font-weight: bold;
