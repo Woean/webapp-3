@@ -66,7 +66,7 @@ function printTable() {
             <div id="new">
                 <label id="newLabel">Neuer Eintrag: </label>
                 <a href="/new"><img class="icon" src="/images/new.png" alt="Eintrag hinzufügen" title="Eintrag hinzufügen" /></a>
-                <br><br>
+                </br></br>
             </div>
             </div>
             
@@ -78,7 +78,7 @@ function printTable() {
              <label for="input" id="searchlabel"> Suche: <input type="text" id="input" onkeyup="searchFunction()" ></label>
              <div id="printButton">
                 <input id = "inputPrintButton" type="button" onclick="printTable()" value="Tabelle drucken" />
-                <br><br>
+                </br></br>
             </div>
             
            
@@ -103,7 +103,7 @@ function printTable() {
                 
             </table>
         </body>
-        <br><br>
+        </br></br>
         <div>Icons erstellt von <a href="https://www.flaticon.com/de/autoren/google" title="Google">Google</a> für <a href="https://www.flaticon.com/de/" title="Flaticon">www.flaticon.com</a></div>
     </html>`;
 }
