@@ -3,10 +3,8 @@
 ## Beschreibung
 Diese Webapplication wurde im Rahmen der FH Lehrveranstaltung Webapplication entwickelt. Vortragende, die in einem JSON-File gespeichert sind, können gesucht, bearbeitet und gelöscht werden.
 
-## Vorbereitung
-Um die Webapplication starten zu können, muss Node.js installiert sein.
-Im geklonten Ordner muss folgender Befehl eingegeben werden: node index.js
-Die Webapplication kann dann in Browser geöffnet werden (Standarteinstellungen: localhost:8080)
+## Vorbereitung 
+Um die Webapplication online zu starten, rufen sie http://37.252.189.245:3000/ auf.
 
 ## Funktionsweise
 * Beim Starten einer neuen Session werden Immer die Daten von notes_data.js angezeigt.
