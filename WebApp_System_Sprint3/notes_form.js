@@ -39,40 +39,42 @@ function getForm(notes, id) {
     <body>
         <h1>${noteHeader}</h1>
         <div id="back">
-            <button id="backButton" onclick="window.location.href = '/'">zurück zur Haupseite</button></br></br>
+            <button id="backButton" onclick="window.location.href = '/'">zurück zur Haupseite</button>
+            <br>
+            <br>
         </div>
         <form name="AddEdit" id="addEdit" action="/save" method="POST">
             <input type="hidden" id="id" name="id" value="${note.id}" />
             <div>
-                <label for="firstname">Vorname</label></br>
-                <textarea  id="firstname" name="firstname" required onkeypress="return checkInputLetters(event, 'lblErrorFirstname')">${note.firstname}</textarea></br>
+                <label for="firstname">Vorname</label><br>
+                <textarea  id="firstname" name="firstname" required onkeypress="return checkInputLetters(event, 'lblErrorFirstname')">${note.firstname}</textarea><br>
                 <span id="lblErrorFirstname" style="color: red"></span>
             </div>
-            </br>
+            <br>
             <div>
-                <label for="lastname">Nachname</label></br>
-                <textarea id="lastname" name="lastname" required onkeypress="return checkInputLetters(event, 'lblErrorLastname')">${note.lastname}</textarea></br>
+                <label for="lastname">Nachname</label><br>
+                <textarea id="lastname" name="lastname" required onkeypress="return checkInputLetters(event, 'lblErrorLastname')">${note.lastname}</textarea><br>
                 <span id="lblErrorLastname" style="color: red"></span>
             </div>
-            </br>
+            <br>
             <div>
-                <label for="department">Department</label></br>
-                <textarea id="department" name="department" required onkeypress="return checkInputLetters(event, 'lblErrorDepartment')">${note.department}</textarea></br>
+                <label for="department">Department</label><br>
+                <textarea id="department" name="department" required onkeypress="return checkInputLetters(event, 'lblErrorDepartment')">${note.department}</textarea><br>
                 <span id="lblErrorDepartment" style="color: red"></span>
             </div>
-            </br>
+            <br>
             <div>
-                <label for="office">Büro</label></br>
-                <textarea id="office" name="office" required onkeypress="return checkInputNumbers(event, 'lblErrorOffice')">${note.office}</textarea></br>
+                <label for="office">Büro</label><br>
+                <textarea id="office" name="office" required onkeypress="return checkInputNumbers(event, 'lblErrorOffice')">${note.office}</textarea><br>
                 <span id="lblErrorOffice" style="color: red"></span>
             </div>
-            </br>
+            <br>
              <div>
-                <label for="worktime">Arbeitszeit</label></br>
-                <textarea id="worktime" name="worktime" required onkeypress="return checkInputLetters(event, 'lblErrorWorktime')">${note.worktime}</textarea></br>
+                <label for="worktime">Arbeitszeit</label><br>
+                <textarea id="worktime" name="worktime" required onkeypress="return checkInputLetters(event, 'lblErrorWorktime')">${note.worktime}</textarea><br>
                 <span id="lblErrorWorktime" style="color: red"></span>
             </div>
-            </br>
+            <br>
             <button type="submit" id="save">Speichern</button><button type="reset" id="reset" onclick="return confirm('Wollen Sie wirklich alle Einträge zurücksetzen?')">Zurücksetzen</button>
 			
 			<script>		
