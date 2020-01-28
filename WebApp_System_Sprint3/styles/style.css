@@ -110,16 +110,25 @@ td{
   float: right;
 }
 
-textarea:invalid {
+input:invalid {
    border: 1px solid red;
    outline: none;
 }
 
-textarea:valid {
+input:valid {
   border: 1px solid green;
   outline: none;
 }
 
+select:valid {
+  border: 1px solid green;
+  outline: none;
+}
+
+select:invalid {
+  border: 1px solid red;
+  outline: none;
+}
 .row {
   display: flex;
   flex-direction: row;
@@ -136,4 +145,8 @@ textarea:valid {
 
 .icon{
   width: 20px;
+}
+
+#worktime {
+  width: 160px;
 }

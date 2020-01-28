@@ -47,32 +47,35 @@ function getForm(notes, id) {
             <input type="hidden" id="id" name="id" value="${note.id}" />
             <div>
                 <label for="firstname">Vorname</label><br>
-                <textarea  id="firstname" name="firstname" required onkeypress="return checkInputLetters(event, 'lblErrorFirstname')">${note.firstname}</textarea><br>
+                <input  id="firstname" name="firstname" placeholder="Max" required pattern="[A-zÜÖÄüöäß]+" onkeypress="return checkInputLetters(event, 'lblErrorFirstname')">${note.firstname}</input><br>
                 <span id="lblErrorFirstname" style="color: red"></span>
             </div>
             <br>
             <div>
                 <label for="lastname">Nachname</label><br>
-                <textarea id="lastname" name="lastname" required onkeypress="return checkInputLetters(event, 'lblErrorLastname')">${note.lastname}</textarea><br>
+                <input id="lastname" name="lastname" placeholder="Mustermann" required pattern="[A-zÜÖÄüöäß]+[-]?[A-zÜÖÄüöäß]+" onkeypress="return checkInputLetters(event, 'lblErrorLastname')" onfocusout="checkCompleteInput('lblErrorLastname')">${note.lastname}</input><br>
                 <span id="lblErrorLastname" style="color: red"></span>
             </div>
             <br>
             <div>
                 <label for="department">Department</label><br>
-                <textarea id="department" name="department" required onkeypress="return checkInputLetters(event, 'lblErrorDepartment')">${note.department}</textarea><br>
+                <input id="department" name="department" placeholder="Medien & Design" required pattern="[A-zÜÖÄüöäß ]+[& -]?[A-zÜÖÄüöäß ]+" onkeypress="return checkInputLetters(event, 'lblErrorDepartment')" onfocusout="checkCompleteInput('lblErrorDepartment')">${note.department}</input><br>
                 <span id="lblErrorDepartment" style="color: red"></span>
             </div>
             <br>
             <div>
                 <label for="office">Büro</label><br>
-                <textarea id="office" name="office" required onkeypress="return checkInputNumbers(event, 'lblErrorOffice')">${note.office}</textarea><br>
+                <input placeholder="G.123AB.456" id="office" name="office" required pattern="[A-Z]\.[A-z0-9]{5}\.[0-9]{3}" onkeypress="return checkInputLetters(event, 'lblErrorOffice')" onfocusout="checkCompleteInput('lblErrorOffice')">${note.office}</input><br>
                 <span id="lblErrorOffice" style="color: red"></span>
             </div>
             <br>
              <div>
                 <label for="worktime">Arbeitszeit</label><br>
-                <textarea id="worktime" name="worktime" required onkeypress="return checkInputLetters(event, 'lblErrorWorktime')">${note.worktime}</textarea><br>
-                <span id="lblErrorWorktime" style="color: red"></span>
+                <select id="worktime" name="worktime" required>
+                    <option disabled selected hidden></option>
+                    <option value="Vollzeit">${note.worktime = "Vollzeit"}</option>
+                    <option value="Teilzeit">${note.worktime = "Teilzeit"}</option>
+                </select>            
             </div>
             <br>
             <button type="submit" id="save">Speichern</button><button type="reset" id="reset" onclick="return confirm('Wollen Sie wirklich alle Einträge zurücksetzen?')">Zurücksetzen</button>
@@ -83,21 +86,21 @@ function getForm(notes, id) {
                     var labelError = document.getElementById(label); 
 				    
 				    if(label.includes("lblErrorDepartment")) {
-				        var regex = /^[A-Za-zÜÖÄüöäß ]+$/;     
-                        var text = "Es sind nur Buchstaben/Leerzeichen erlaubt."
+				        var regex = /^[A-zÜÖÄüöäß &-]+$/;     
+                        var text = "Es sind nur Buchstaben/Leerzeichen/&/- erlaubt."
                         var length = document.forms["AddEdit"]["department"].value.length;
                     } else if(label.includes("lblErrorFirstname")) {
-                        var regex = /^[A-Za-zÜÖÄüöäß]+$/;
+                        var regex = /^[A-zÜÖÄüöäß]+$/;
                         var text = "Es sind nur Buchstaben erlaubt.";
                         var length = document.forms["AddEdit"]["firstname"].value.length;
                     } else if(label.includes("lblErrorLastname")) {
-                        var regex = /^[A-Za-zÜÖÄüöäß]+$/;
-                        var text = "Es sind nur Buchstaben erlaubt.";
+                        var regex = /^[A-zÜÖÄüöäß-]+$/;
+                        var text = "Es sind nur Buchstaben/- erlaubt.";
                         var length = document.forms["AddEdit"]["lastname"].value.length;
-                    } else {
-                        var regex = /^[A-Za-zÜÖÄüöäß]+$/;
-                        var text = "Es sind nur Buchstaben erlaubt.";
-                        var length = document.forms["AddEdit"]["worktime"].value.length;
+                    }  else if(label.includes("lblErrorOffice")) {
+                        var regex = /^[A-z0-9.]+$/;
+                        var text = "Es sind nur Buchstaben/Zahlen/. erlaubt.";
+                        var length = document.forms["AddEdit"]["lastname"].value.length;
                     }
 				    
                     var isValid = regex.test(String.fromCharCode(keyCode));
@@ -115,27 +118,30 @@ function getForm(notes, id) {
                     return isValid;
                 }
                 
-                function checkInputNumbers(e, label) {
+                function checkCompleteInput(label) {
+				    var labelError = document.getElementById(label);
+				    if(label.includes("lblErrorDepartment")) {
+				        var value = document.getElementById("department").value;
+				        var regex = /^[A-zÜÖÄüöäß ]+[& -]?[A-zÜÖÄüöäß ]+$/;
+				        var text = "Beispiel für eine gültige Eingabe: Medien & Design";
+				    } else if(label.includes("lblErrorOffice")) {
+				        var value = document.getElementById("office").value;
+				        var regex = /^[A-Z]\.[A-z0-9]{5}\.[0-9]{3}$/;
+				        var text = "Beispiel für eine gültige Eingabe: G.WS46B.103";
+				    } else if(label.includes("lblErrorLastname")) {
+				        var value = document.getElementById("lastname").value;
+				        var regex = /^[A-zÜÖÄüöäß]+[-]?[A-zÜÖÄüöäß]+$/;
+				        var text = "Beispiel für eine gültige Eingabe: Mustermann oder Mustermann-Jedermann";
+				    }
 				    
-				    var keyCode = e.keyCode || e.which;
-                    var labelError = document.getElementById(label);
-                    var length = document.forms["AddEdit"]["office"].value.length;
-          
-                    var regex = /^[0-9]+$/;
-
-                    var isValid = regex.test(String.fromCharCode(keyCode));
-                    if (!isValid) {
-                        labelError.innerHTML = "Es sind nur Zahlen erlaubt.";
-                    } 
-                    else if (length >= 3) {
-                        labelError.innerHTML = "Die Eingabe darf nicht länger als 3 Zeichen sein.";
-                        isValid=false;
-                    } 
-                    else {
+				    var isValid = regex.test(value);
+				    
+				    if(!isValid) {
+				        labelError.innerHTML = text;
+				    }
+				    else {
                         labelError.innerHTML = "";
                     }
-             
-                    return isValid;
                 }
 
 
