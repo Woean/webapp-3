@@ -26,6 +26,8 @@ function getForm(notes, id) {
         console.log(note)
 
         noteHeader = "Vortragende(n) bearbeiten";
+
+
     }
 
     // build form within javascript
@@ -36,7 +38,7 @@ function getForm(notes, id) {
         <meta charset="utf-8">
         <link rel="stylesheet" href="/styles/style.css" />
     </head>
-    <body>
+    <body onload="loadOption('${note.worktime}')">
         <h1>${noteHeader}</h1>
         <div id="back">
             <button id="backButton" onclick="window.location.href = '/'">zurück zur Haupseite</button>
@@ -47,40 +49,52 @@ function getForm(notes, id) {
             <input type="hidden" id="id" name="id" value="${note.id}" />
             <div>
                 <label for="firstname">Vorname</label><br>
-                <input  id="firstname" name="firstname" placeholder="Max" required pattern="[A-zÜÖÄüöäß]+" onkeypress="return checkInputLetters(event, 'lblErrorFirstname')">${note.firstname}</input><br>
+                <input  id="firstname" name="firstname" placeholder="Max" value="${note.firstname}" required pattern="[A-zÜÖÄüöäß]+" onkeypress="return checkInputLetters(event, 'lblErrorFirstname')"></input><br>
                 <span id="lblErrorFirstname" style="color: red"></span>
             </div>
             <br>
             <div>
                 <label for="lastname">Nachname</label><br>
-                <input id="lastname" name="lastname" placeholder="Mustermann" required pattern="[A-zÜÖÄüöäß]+[-]?[A-zÜÖÄüöäß]+" onkeypress="return checkInputLetters(event, 'lblErrorLastname')" onfocusout="checkCompleteInput('lblErrorLastname')">${note.lastname}</input><br>
+                <input id="lastname" name="lastname" placeholder="Mustermann" value="${note.lastname}" required pattern="[A-zÜÖÄüöäß]+[-]?[A-zÜÖÄüöäß]+" onkeypress="return checkInputLetters(event, 'lblErrorLastname')" onfocusout="checkCompleteInput('lblErrorLastname')"></input><br>
                 <span id="lblErrorLastname" style="color: red"></span>
             </div>
             <br>
             <div>
                 <label for="department">Department</label><br>
-                <input id="department" name="department" placeholder="Medien & Design" required pattern="[A-zÜÖÄüöäß ]+[& -]?[A-zÜÖÄüöäß ]+" onkeypress="return checkInputLetters(event, 'lblErrorDepartment')" onfocusout="checkCompleteInput('lblErrorDepartment')">${note.department}</input><br>
+                <input id="department" name="department" placeholder="Medien & Design" value="${note.department}" required pattern="[A-zÜÖÄüöäß ]+[& -]?[A-zÜÖÄüöäß ]+" onkeypress="return checkInputLetters(event, 'lblErrorDepartment')" onfocusout="checkCompleteInput('lblErrorDepartment')"></input><br>
                 <span id="lblErrorDepartment" style="color: red"></span>
             </div>
             <br>
             <div>
                 <label for="office">Büro</label><br>
-                <input placeholder="G.123AB.456" id="office" name="office" required pattern="[A-Z]\.[A-Z0-9]{5}\.[0-9]{3}" onkeypress="return checkInputLetters(event, 'lblErrorOffice')" onfocusout="checkCompleteInput('lblErrorOffice')">${note.office}</input><br>
+                <input id="office" name="office" placeholder="K.WS46B.103"  value="${note.office}" required pattern="[A-Z]\.[A-Z0-9]{5}\.[0-9]{3}" onkeypress="return checkInputLetters(event, 'lblErrorOffice')" onfocusout="checkCompleteInput('lblErrorOffice')"></input><br>
                 <span id="lblErrorOffice" style="color: red"></span>
             </div>
             <br>
              <div>
                 <label for="worktime">Arbeitszeit</label><br>
                 <select id="worktime" name="worktime" required>
-                    <option disabled selected hidden></option>
-                    <option value="Vollzeit">${note.worktime = "Vollzeit"}</option>
-                    <option value="Teilzeit">${note.worktime = "Teilzeit"}</option>
+                    <option id="none" disabled hidden></option>
+                    <option id="fulltime" value="Vollzeit">Vollzeit</option>
+                    <option id="halftime" value="Teilzeit">Teilzeit</option>
                 </select>            
             </div>
             <br>
             <button type="submit" id="save">Speichern</button><button type="reset" id="reset" onclick="return confirm('Wollen Sie wirklich alle Einträge zurücksetzen?')">Zurücksetzen</button>
 			
-			<script>		
+			<script>
+			
+    function loadOption(worktime){
+        console.log(worktime);
+        if(worktime.includes("Vollzeit")) {
+            document.getElementById('fulltime').selected = 'selected';
+        } else if (worktime.includes("Teilzeit")){
+            document.getElementById('halftime').selected = 'selected';
+        } else {
+            document.getElementById('none').selected = 'selected';
+        }
+    }
+    
 				function checkInputLetters(e, label) {
 				    var keyCode = e.keyCode || e.which;
                     var labelError = document.getElementById(label); 
@@ -127,7 +141,7 @@ function getForm(notes, id) {
 				    } else if(label.includes("lblErrorOffice")) {
 				        var value = document.getElementById("office").value;
 				        var regex = /^[A-Z]\.[A-Z0-9]{5}\.[0-9]{3}$/;
-				        var text = "Beispiel für eine gültige Eingabe: G.WS46B.103";
+				        var text = "Beispiel für eine gültige Eingabe: K.WS46B.103";
 				    } else if(label.includes("lblErrorLastname")) {
 				        var value = document.getElementById("lastname").value;
 				        var regex = /^[A-zÜÖÄüöäß]+[-]?[A-zÜÖÄüöäß]+$/;
