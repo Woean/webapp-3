@@ -97,13 +97,6 @@ td{
   text-align: center;
 }
 
-#searchlabel{
-  font-family: Helvetica;
-  color: #cc0033;
-  margin: auto;
-  width: 50%;
-}
-
 #logofh{
   width: 100%;
   height: auto;
@@ -129,6 +122,17 @@ select:invalid {
   border: 1px solid red;
   outline: none;
 }
+
+#searchlabel {
+  font-family: Helvetica;
+  margin: auto;
+  width: 50%;
+}
+
+#input {
+  border: 1px solid black;
+}
+
 .row {
   display: flex;
   flex-direction: row;
