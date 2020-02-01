@@ -67,7 +67,7 @@ function getForm(notes, id) {
             <br>
             <div>
                 <label for="office">Büro</label><br>
-                <input id="office" name="office" placeholder="K.WS46B.103"  value="${note.office}" required pattern="[A-Z]\.[A-Z0-9]{5}\.[0-9]{3}" onkeypress="return checkInputLetters(event, 'lblErrorOffice')" onfocusout="checkCompleteInput('lblErrorOffice')"></input><br>
+                <input id="office" name="office" placeholder="K.WS46B.103"  value="${note.office}" required pattern="[A-Z]\.[A-z0-9]{5}\.[A-z0-9]{3,4}" onkeypress="return checkInputLetters(event, 'lblErrorOffice')" onfocusout="checkCompleteInput('lblErrorOffice')"></input><br>
                 <span id="lblErrorOffice" style="color: red"></span>
             </div>
             <br>
@@ -112,8 +112,8 @@ function getForm(notes, id) {
                         var text = "Es sind nur Buchstaben/- erlaubt.";
                         var length = document.forms["AddEdit"]["lastname"].value.length;
                     }  else if(label.includes("lblErrorOffice")) {
-                        var regex = /^[A-Z0-9.]+$/;
-                        var text = "Es sind nur Großbuchstaben/Zahlen/. erlaubt.";
+                        var regex = /^[A-z0-9.]+$/;
+                        var text = "Es sind nur Buchstaben/Zahlen/. erlaubt.";
                         var length = document.forms["AddEdit"]["lastname"].value.length;
                     }
 				    
@@ -140,7 +140,7 @@ function getForm(notes, id) {
 				        var text = "Beispiel für eine gültige Eingabe: Medien & Design";
 				    } else if(label.includes("lblErrorOffice")) {
 				        var value = document.getElementById("office").value;
-				        var regex = /^[A-Z]\.[A-Z0-9]{5}\.[0-9]{3}$/;
+				        var regex = /^[A-Z]\.[A-z0-9]{5}\.[A-z0-9]{3,4}$/;
 				        var text = "Beispiel für eine gültige Eingabe: K.WS46B.103";
 				    } else if(label.includes("lblErrorLastname")) {
 				        var value = document.getElementById("lastname").value;
