@@ -3,7 +3,7 @@ module.exports =[{
 			"firstname": "Elmar",
 			"lastname": "Krainz",
 			"department": "Angewandte Informatik",
-			"office": "012",
+			"office": "K.WS46a.EV50",
 			"worktime": "Vollzeit"
 		},
 		{
@@ -11,7 +11,7 @@ module.exports =[{
 			"firstname": "Michael",
 			"lastname": "Ulm",
 			"department": "Angewandte Informatik",
-			"office": "013",
+			"office": "K.WS46a.U04",
 			"worktime": "Vollzeit"
 		},
 		{
@@ -19,7 +19,7 @@ module.exports =[{
 			"firstname": "Andreas",
 			"lastname": "Öffl",
 			"department": "Angewandte Informatik",
-			"office": "206",
+			"office": "K.WS46a.U15a",
 			"worktime": "Vollzeit"
 		},
 		{
@@ -27,7 +27,7 @@ module.exports =[{
 			"firstname": "Roxane",
 			"lastname": "Koitz-Hristov",
 			"department": "Angewandte Informatik",
-			"office": "",
+			"office": "K.WS46b.111b",
 			"worktime": "Teilzeit"
 		},
 		{
@@ -35,7 +35,7 @@ module.exports =[{
 			"firstname": "Lukas",
 			"lastname": "Eberhard",
 			"department": "Angewandte Informatik",
-			"office": "",
+			"office": "K.WS46b.1V01",
 			"worktime": "Teilzeit"
 		},
 		{
@@ -43,7 +43,7 @@ module.exports =[{
 			"firstname": "Michaela",
 			"lastname": "Kofler",
 			"department": "Bauen, Energie & Gesellschaft",
-			"office": "301",
+			"office": "K.WS46c.304",
 			"worktime": "Vollzeit"
 		},
 		{
@@ -51,7 +51,7 @@ module.exports =[{
 			"firstname": "Uwe",
 			"lastname": "Trattnig",
 			"department": "Bauen, Energie & Gesellschaft",
-			"office": "124",
+			"office": "K.WS46a.101",
 			"worktime": "Vollzeit"
 		},
 		{
@@ -59,7 +59,7 @@ module.exports =[{
 			"firstname": "Gertraud",
 			"lastname": "Pantucek",
 			"department": "Bauen, Energie & Gesellschaft",
-			"office": "216",
+			"office": "G.AP147.119",
 			"worktime": "Vollzeit"
 		},
 		{
@@ -67,7 +67,7 @@ module.exports =[{
 			"firstname": "Hans",
 			"lastname": "Aubauer",
 			"department": "Managment",
-			"office": "",
+			"office": "G.AP147.1V51",
 			"worktime": "Teilzeit"
 		},
 		{
@@ -75,7 +75,7 @@ module.exports =[{
 			"firstname": "Michael",
 			"lastname": "Murg",
 			"department": "Managment",
-			"office": "416",
+			"office": "G.AP147.2V01",
 			"worktime": "Vollzeit"
 		},
 		{
@@ -83,7 +83,7 @@ module.exports =[{
 			"firstname": "Christian",
 			"lastname": "Friedl",
 			"department": "Managment",
-			"office": "406",
+			"office": "G.AP147.401",
 			"worktime": "Vollzeit"
 		},
 		{
@@ -91,7 +91,7 @@ module.exports =[{
 			"firstname": "Kurt",
 			"lastname": "Steiner",
 			"department": "Engineering",
-			"office": "134",
+			"office": "K.WS46b.111a",
 			"worktime": "Vollzeit"
 		},
 		{
@@ -99,7 +99,7 @@ module.exports =[{
 			"firstname": "Christian",
 			"lastname": "Vogel",
 			"department": "Engineering",
-			"office": "147",
+			"office": "K.WS46a.1G11",
 			"worktime": "Vollzeit"
 		},
 		{
@@ -107,7 +107,7 @@ module.exports =[{
 			"firstname": "Holger",
 			"lastname": "Friehmelt",
 			"department": "Engineering",
-			"office": "149",
+			"office": "K.WS46b.U40",
 			"worktime": "Vollzeit"
 		},
 		{
@@ -115,7 +115,7 @@ module.exports =[{
 			"firstname": "Heinz",
 			"lastname": "Fischer",
 			"department": "Medien & Design",
-			"office": "011",
+			"office": "K.WS46c.304",
 			"worktime": "Vollzeit"
 		}
 	];
