@@ -61,7 +61,7 @@ function getForm(notes, id) {
             <br>
             <div>
                 <label for="department">Department</label><br>
-                <input id="department" name="department" placeholder="Medien & Design" value="${note.department}" required pattern="[A-zÜÖÄüöäß ]+[& -]?[A-zÜÖÄüöäß ]+" onkeypress="return checkInputLetters(event, 'lblErrorDepartment')" onfocusout="checkCompleteInput('lblErrorDepartment')"></input><br>
+                <input id="department" name="department" placeholder="Medien & Design" value="${note.department}" required pattern="[A-zÜÖÄüöäß ]+([,& -]?[A-zÜÖÄüöäß ]+)*" onkeypress="return checkInputLetters(event, 'lblErrorDepartment')" onfocusout="checkCompleteInput('lblErrorDepartment')"></input><br>
                 <span id="lblErrorDepartment" style="color: red"></span>
             </div>
             <br>
@@ -100,8 +100,8 @@ function getForm(notes, id) {
                     var labelError = document.getElementById(label); 
 				    
 				    if(label.includes("lblErrorDepartment")) {
-				        var regex = /^[A-zÜÖÄüöäß &-]+$/;     
-                        var text = "Es sind nur Buchstaben/Leerzeichen/&/- erlaubt."
+				        var regex = /^[,A-zÜÖÄüöäß &-]+$/;     
+                        var text = "Es sind nur Buchstaben/Leerzeichen/&/-/, erlaubt."
                         var length = document.forms["AddEdit"]["department"].value.length;
                     } else if(label.includes("lblErrorFirstname")) {
                         var regex = /^[A-zÜÖÄüöäß]+$/;
@@ -136,7 +136,7 @@ function getForm(notes, id) {
 				    var labelError = document.getElementById(label);
 				    if(label.includes("lblErrorDepartment")) {
 				        var value = document.getElementById("department").value;
-				        var regex = /^[A-zÜÖÄüöäß ]+[& -]?[A-zÜÖÄüöäß ]+$/;
+				        var regex = /^[A-zÜÖÄüöäß ]+([,& -]?[A-zÜÖÄüöäß ]+)*$/;
 				        var text = "Beispiel für eine gültige Eingabe: Medien & Design";
 				    } else if(label.includes("lblErrorOffice")) {
 				        var value = document.getElementById("office").value;
