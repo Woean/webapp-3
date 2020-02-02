@@ -49,41 +49,46 @@ function getForm(notes, id) {
             <input type="hidden" id="id" name="id" value="${note.id}" />
             <div>
                 <label for="firstname">Vorname</label><br>
-                <input  id="firstname" name="firstname" placeholder="Max" value="${note.firstname}" required pattern="[A-zÜÖÄüöäß]+" onkeypress="return checkInputLetters(event, 'lblErrorFirstname')"></input><br>
+                <input  id="firstname" name="firstname" placeholder="Max" value="${note.firstname}" required pattern="[A-zÜÖÄüöäß]+" onkeypress="return checkInputLetters(event, 'lblErrorFirstname')" onchange="askUser()"><br>
                 <span id="lblErrorFirstname" style="color: red"></span>
             </div>
             <br>
             <div>
                 <label for="lastname">Nachname</label><br>
-                <input id="lastname" name="lastname" placeholder="Mustermann" value="${note.lastname}" required pattern="[A-zÜÖÄüöäß]+[-]?[A-zÜÖÄüöäß]+" onkeypress="return checkInputLetters(event, 'lblErrorLastname')" onfocusout="checkCompleteInput('lblErrorLastname')"></input><br>
+                <input id="lastname" name="lastname" placeholder="Mustermann" value="${note.lastname}" required pattern="[A-zÜÖÄüöäß]+[-]?[A-zÜÖÄüöäß]+" onkeypress="return checkInputLetters(event, 'lblErrorLastname')" onfocusout="checkCompleteInput('lblErrorLastname')" onchange="askUser()"><br>
                 <span id="lblErrorLastname" style="color: red"></span>
             </div>
             <br>
             <div>
                 <label for="department">Department</label><br>
-                <input id="department" name="department" placeholder="Medien & Design" value="${note.department}" required pattern="[A-zÜÖÄüöäß ]+([,& -]?[A-zÜÖÄüöäß ]+)*" onkeypress="return checkInputLetters(event, 'lblErrorDepartment')" onfocusout="checkCompleteInput('lblErrorDepartment')"></input><br>
+                <input id="department" name="department" placeholder="Medien & Design" value="${note.department}" required pattern="[A-zÜÖÄüöäß]+([ ]?[,&-]?[ ]?[A-zÜÖÄüöäß]+)*" onkeypress="return checkInputLetters(event, 'lblErrorDepartment')" onfocusout="checkCompleteInput('lblErrorDepartment')" onchange="askUser()"><br>
                 <span id="lblErrorDepartment" style="color: red"></span>
             </div>
             <br>
             <div>
                 <label for="office">Büro</label><br>
-                <input id="office" name="office" placeholder="K.WS46B.103"  value="${note.office}" required pattern="[A-Z]\.[A-z0-9]{5}\.[A-z0-9]{3,4}" onkeypress="return checkInputLetters(event, 'lblErrorOffice')" onfocusout="checkCompleteInput('lblErrorOffice')"></input><br>
+                <input id="office" name="office" placeholder="K.WS46B.103"  value="${note.office}" required pattern="[A-Z]\.[A-z0-9]{5}\.[A-z0-9]{3,4}" onkeypress="return checkInputLetters(event, 'lblErrorOffice')" onfocusout="checkCompleteInput('lblErrorOffice')" onchange="askUser()"><br>
                 <span id="lblErrorOffice" style="color: red"></span>
             </div>
             <br>
              <div>
                 <label for="worktime">Arbeitszeit</label><br>
-                <select id="worktime" name="worktime" required>
+                <select id="worktime" name="worktime" required onchange="askUser()">
                     <option id="none" disabled hidden></option>
                     <option id="fulltime" value="Vollzeit">Vollzeit</option>
                     <option id="halftime" value="Teilzeit">Teilzeit</option>
                 </select>            
             </div>
             <br>
-            <button type="submit" id="save">Speichern</button><button type="reset" id="reset" onclick="return confirm('Wollen Sie wirklich alle Einträge zurücksetzen?')">Zurücksetzen</button>
+            <button type="submit" id="save" onclick="window.onbeforeunload = null;">Speichern</button><button type="reset" id="reset" onclick="window.onbeforeunload = null; return confirm('Wollen Sie wirklich alle Einträge zurücksetzen?')">Zurücksetzen</button>
 			
 			<script>
-			
+	function askUser() {		
+	    window.onbeforeunload = function(){
+            return 'Ihre Änderungen werden eventuell nicht gespeichert.';
+        };		
+	}
+	
     function loadOption(worktime){
         console.log(worktime);
         if(worktime.includes("Vollzeit")) {
@@ -136,7 +141,7 @@ function getForm(notes, id) {
 				    var labelError = document.getElementById(label);
 				    if(label.includes("lblErrorDepartment")) {
 				        var value = document.getElementById("department").value;
-				        var regex = /^[A-zÜÖÄüöäß ]+([,& -]?[A-zÜÖÄüöäß ]+)*$/;
+				        var regex = /^[A-zÜÖÄüöäß]+([ ]?[,&-]?[ ]?[A-zÜÖÄüöäß]+)*$/;
 				        var text = "Beispiel für eine gültige Eingabe: Medien & Design";
 				    } else if(label.includes("lblErrorOffice")) {
 				        var value = document.getElementById("office").value;
